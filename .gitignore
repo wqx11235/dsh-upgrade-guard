@@ -1,0 +1,8 @@
+node_modules/
+*.log
+*.bak
+*.bak-*
+*.report.md
+*.smoke.report.md
+.DS_Store
+Thumbs.db
