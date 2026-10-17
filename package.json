@@ -1,20 +1,36 @@
 {
   "name": "dsh-upgrade-guard",
-  "version": "0.1.0",
-  "description": "Upgrade guard for DeepSeek Harness: pre-flight plugin compatibility check, post-upgrade contract scan, and a boot smoke test — so a core update cannot silently take your UI down. · DSH 升级守卫：升级前兼容盘点 + 升级后契约扫描 + 启动冒烟，终结「更新一次崩一次」。",
+  "version": "0.2.0",
+  "description": "Upgrade guard for DeepSeek Harness: pre-flight plugin compatibility inventory, offline contract scan, and boot smoke test — so a core update cannot silently take your UI down. · DSH 升级守卫：升级前兼容盘点 + 升级后契约扫描 + 启动冒烟，终结「更新一次崩一次」。",
   "type": "module",
-  "main": "index.js",
+  "main": "lib/index.js",
   "exports": {
-    ".": "./index.js",
-    "./client": "./client.js",
-    "./lib/guard.mjs": "./lib/guard.mjs",
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./guard": {
+      "default": "./lib/guard.mjs"
+    },
     "./package.json": "./package.json"
   },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
   "files": [
-    "index.js",
-    "client.js",
     "lib",
+    "cordis.patch.yml",
+    "dsh.plugin.json",
     "README.md",
+    "README.zh.md",
     "LICENSE"
   ],
   "keywords": [
@@ -24,7 +40,10 @@
     "dsh-plugin",
     "upgrade",
     "compatibility",
-    "smoke-test"
+    "contract-scan",
+    "smoke-test",
+    "desktop",
+    "electron"
   ],
   "license": "MIT",
   "repository": {
@@ -32,12 +51,29 @@
     "url": "git+https://github.com/wqx11235/dsh-upgrade-guard.git"
   },
   "homepage": "https://github.com/wqx11235/dsh-upgrade-guard",
-  "dsh": {
-    "client": {
-      "platform": "web"
-    }
+  "bugs": {
+    "url": "https://github.com/wqx11235/dsh-upgrade-guard/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-client-ui-slots": "*",
+    "react": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-slots": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
   }
 }

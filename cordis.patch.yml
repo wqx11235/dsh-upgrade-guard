@@ -1,0 +1,10 @@
+# dsh-upgrade-guard bundle patch: mount the host half under the package name,
+# resolved through the profile's node_modules.
+#
+# The host half has no @deepseek-ai imports (node builtins + the `webServer`
+# service only), so it loads on every dsh line that keeps the loader contract.
+# Its own `/api/dsh-upgrade-guard` route is registered straight on webServer,
+# which bypasses the browser-session auth fence on 0.1.2+ (same as /dsh-market/*).
+- insert:
+    - id: dsh-upgrade-guard
+      name: 'dsh-upgrade-guard'

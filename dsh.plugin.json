@@ -1,0 +1,12 @@
+{
+  "name": "dsh-upgrade-guard",
+  "description": "Pre-flight plugin compatibility inventory, offline contract scan, and boot smoke test for DeepSeek Harness upgrades",
+  "version": "0.2.0",
+  "entry": {
+    "name": "dsh-upgrade-guard",
+    "inject": ["webServer"]
+  },
+  "client": {
+    "platform": "web"
+  }
+}

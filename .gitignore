@@ -6,3 +6,5 @@ node_modules/
 *.smoke.report.md
 .DS_Store
 Thumbs.db
+
+*.tgz
